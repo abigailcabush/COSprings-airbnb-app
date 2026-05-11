@@ -69,7 +69,6 @@ st.markdown(
     "<h2 style='font-weight: 500; margin-top: -10px;'>Bed & Room Selection with approximate prices</h2>", 
     unsafe_allow_html=True
 )
-st.markdown("<div id='linkto_top'></div>", unsafe_allow_html=True)
 
 # Step 1: Identity
 user_name = st.selectbox("Who are you?", ["Select a name..."] + NAMES)
@@ -132,7 +131,7 @@ if user_name != "Select a name...":
                             if success:
                                 # 1. Clear the internal cache so the "Success" box at the top sees the new data
                                 st.cache_data.clear() 
-                                
+
                                 st.toast("Selection updated! Scroll to the top of page for full pricing details", icon="✅")
 
                                 st.rerun()
