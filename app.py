@@ -101,7 +101,7 @@ if user_name != "Select a name...":
     
     st.divider()
     # Step 3: Bed Grid
-    st.subheader("Select a Bed, Bedroom, and Potential Roommates:")
+    st.subheader("Select a Bed, Bedroom, and Roommates:")
     
     rooms = ["BEDROOM A (Main Level)", "BEDROOM B (Main Level)", "BEDROOM C (Main Level --> 3 bathrooms on main level)", 
              "BEDROOM D (Lower Level --> only 1 bathroom on lower level)", "BEDROOM E (Lower Level)", "SHARED SPACE"]
