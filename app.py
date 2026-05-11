@@ -91,7 +91,7 @@ if user_name != "Select a name...":
             f"**Selection Saved!**\n\n"
             f"{current_bed['room']}, {current_bed['description']}\n\n"
             f"\n\n" 
-            f"**Estimated Total Cost for the Weekend**: \${total_p} ± \$15 for {n_count} days"
+            f"**Estimated Total Cost for the Weekend**: \${total_p} ± \$15 for {n_count} nights"
         )
         
         if st.button("Clear My Selection"):
@@ -122,7 +122,7 @@ if user_name != "Select a name...":
                 with col2:
                     if is_taken:
                          n_display = int(float(db_row['nights'])) if db_row['nights'] != "" else 0
-                         st.error(f"Taken: {db_row['occupant']} ({n_display} nights)")
+                         st.error(f"**Taken**: {db_row['occupant']} ({n_display} nights)")
                     else:
                         if st.button(f"Claim", key=f"btn_{bed['id']}"):
                             success = update_bed(bed['id'], user_name, num_nights)
