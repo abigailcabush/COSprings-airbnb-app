@@ -88,13 +88,13 @@ if user_name != "Select a name...":
         total_p = int(p_night * n_count)
         
         st.success(
-            f"✅ **Selection Saved!**\n\n"
-            f"**{current_bed['room']}**: {current_bed['description']}\n\n"
+            f" **Selection Saved!**\n\n"
+            f"{current_bed['room']}: {current_bed['description']}\n\n"
             f"\n\n" 
             f"**Total Cost**: approximately \${total_p} ± \$15"
         )
         
-        if st.button("❌ Clear My Selection"):
+        if st.button("Clear My Selection"):
             update_bed(None, user_name, None)
             st.cache_data.clear()
             st.rerun()
