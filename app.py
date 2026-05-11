@@ -14,22 +14,22 @@ NAMES = [
 
 # Bed Inventory Data
 BED_DATA = [
-    {"id": 1, "room": "BEDROOM A (Main Level)", "desc": "Shared King #1 (with Ensuite bathroom)", "price": 88},
-    {"id": 2, "room": "BEDROOM A (Main Level)", "desc": "Shared King #2 (with Ensuite bathroom)", "price": 88},
-    {"id": 3, "room": "BEDROOM B (Main Level)", "desc": "Shared Queen #1 (bottom bunk)", "price": 78.50},
-    {"id": 4, "room": "BEDROOM B (Main Level)", "desc": "Shared Queen #2 (bottom bunk)", "price": 78.5},
-    {"id": 5, "room": "BEDROOM B (Main Level)", "desc": "Twin (top bunk)", "price": 81},
-    {"id": 6, "room": "BEDROOM C (Main Level)", "desc": "Shared Queen #1", "price": 83},
-    {"id": 7, "room": "BEDROOM C (Main Level)", "desc": "Shared Queen #2", "price": 83},
-    {"id": 8, "room": "BEDROOM D (Lower Level)", "desc": "Shared Queen #1", "price": 83},
-    {"id": 9, "room": "BEDROOM D (Lower Level)", "desc": "Shared Queen #2", "price": 83},
-    {"id": 10, "room": "BEDROOM E (Lower Level)", "desc": "Shared King #1", "price": 71},
-    {"id": 11, "room": "BEDROOM E (Lower Level)", "desc": "Shared King #2", "price": 71},
-    {"id": 12, "room": "BEDROOM E (Lower Level)", "desc": "Twin (top bunk of bed A)", "price": 76},
-    {"id": 13, "room": "BEDROOM E (Lower Level)", "desc": "Twin (top bunk of bed B)", "price": 76},
-    {"id": 14, "room": "BEDROOM E (Lower Level)", "desc": "Twin (bottom bunk of bed A)", "price": 76},
-    {"id": 15, "room": "BEDROOM E (Lower Level)", "desc": "Twin (top bunk of bed B)", "price": 76},
-    {"id": 16, "room": "SHARED SPACE", "desc": "Couch (3 options: 2 upstairs, 1 downstairs)", "price": 56},
+    {"id": 1, "room": "BEDROOM A (Main Level)", "desc": "Shared King #1 (with Ensuite bathroom)", "price": 90},
+    {"id": 2, "room": "BEDROOM A (Main Level)", "desc": "Shared King #2 (with Ensuite bathroom)", "price": 90},
+    {"id": 3, "room": "BEDROOM B (Main Level)", "desc": "Shared Queen #1 (bottom bunk)", "price": 80},
+    {"id": 4, "room": "BEDROOM B (Main Level)", "desc": "Shared Queen #2 (bottom bunk)", "price": 80},
+    {"id": 5, "room": "BEDROOM B (Main Level)", "desc": "Twin (top bunk)", "price": 82.50},
+    {"id": 6, "room": "BEDROOM C (Main Level)", "desc": "Shared Queen #1", "price": 85},
+    {"id": 7, "room": "BEDROOM C (Main Level)", "desc": "Shared Queen #2", "price": 85},
+    {"id": 8, "room": "BEDROOM D (Lower Level)", "desc": "Shared Queen #1", "price": 82.50},
+    {"id": 9, "room": "BEDROOM D (Lower Level)", "desc": "Shared Queen #2", "price": 82.50},
+    {"id": 10, "room": "BEDROOM E (Lower Level)", "desc": "Shared King #1", "price": 70},
+    {"id": 11, "room": "BEDROOM E (Lower Level)", "desc": "Shared King #2", "price": 70},
+    {"id": 12, "room": "BEDROOM E (Lower Level)", "desc": "Twin (top bunk of bed A)", "price": 75},
+    {"id": 13, "room": "BEDROOM E (Lower Level)", "desc": "Twin (top bunk of bed B)", "price": 75},
+    {"id": 14, "room": "BEDROOM E (Lower Level)", "desc": "Twin (bottom bunk of bed A)", "price": 75},
+    {"id": 15, "room": "BEDROOM E (Lower Level)", "desc": "Twin (top bunk of bed B)", "price": 75},
+    {"id": 16, "room": "SHARED SPACE", "desc": "Couch (3 options: 2 upstairs, 1 downstairs)", "price": 55},
 ]
 
 # --- DATABASE CONNECTION ---
