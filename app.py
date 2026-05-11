@@ -6,8 +6,9 @@ st.set_page_config(page_title="AirBnB Bed Selection", layout="centered")
 
 # --- APP CONFIG & DATA ---
 NAMES = [
-    "Hannah", "Max", "CJ", "Lily", "Lauren P", "Jane", "Abby", "Anna", 
-    "Lauren B", "Cara", "Liv", "Molly", "Laurel", "Logan", "Gabby", "Isabelle G"
+    "Abby", "Anna", "Cara", "CJ", "Gabby", "Hannah", "Isabelle G",
+    "Jane", "Laurel", "Lauren B", "Lauren P", "Lily", "Liv", "Logan",
+    "Max", "Molly"
 ]
 
 # Bed Inventory Data
