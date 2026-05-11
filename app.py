@@ -99,7 +99,7 @@ if user_name != "Select a name...":
             st.cache_data.clear()
             st.rerun()
     
-    
+    st.divider()
     # Step 3: Bed Grid
     st.subheader("Select a Bed, Bedroom, and Potential Roommates:")
     
