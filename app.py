@@ -133,8 +133,9 @@ if user_name != "Select a name...":
                                 # 1. Clear the internal cache so the "Success" box at the top sees the new data
                                 st.cache_data.clear() 
                                 
-                                # 2. A subtle "toast" instead of big balloons
                                 st.toast("Selection updated! Scroll to the top of page for full pricing details", icon="✅")
+
+                                st.rerun()
                                 
                             else:
                                 st.error("Error. Someone might have just taken this bed!")
