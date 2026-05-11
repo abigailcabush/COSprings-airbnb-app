@@ -35,36 +35,46 @@ BED_DATA = [
 conn = st.connection("gsheets", type=GSheetsConnection)
 
 def get_data():
-    # We force 'occupant' and 'nights' to be strings so pandas doesn't panic
-    raw_df = conn.read(ttl=0)
-    df = raw_df.astype({
-        'occupant': str, 
-        'nights': str,
-        'bed_id': int
-    })
-    # Clean up: change "nan" strings back to empty space
-    df['occupant'] = df['occupant'].replace(['nan', 'None', ''], None)
+    # Read the data
+    df = conn.read(ttl=0)
+    
+    # 1. Force the columns to be "object" (this allows both text and empty values)
+    # 2. Fill any empty/null cells with an empty string "" immediately
+    df['occupant'] = df['occupant'].fillna("").astype(str)
+    df['nights'] = df['nights'].fillna("").astype(str)
+    df['bed_id'] = df['bed_id'].astype(int)
+    
+    # Clean up any weird "nan" strings that might have been read
+    df['occupant'] = df['occupant'].replace(['nan', 'None'], "")
+    df['nights'] = df['nights'].replace(['nan', 'None'], "")
+    
     return df
 
 def update_bed(bed_id, name, nights):
     df = get_data()
+    
     # Check if someone else took it while we were looking
-    current_occupant = df.loc[df['bed_id'] == bed_id, 'occupant'].values[0]
-    if pd.notna(current_occupant) and current_occupant != "" and current_occupant != name:
-        return False
-    
-    # Clear user's old selection first
-    df.loc[df['occupant'] == name, ['occupant', 'nights']] = [None, None]
-    
-    # Make new selection if not clearing
+    # (We use .strip() to make sure we aren't tricked by hidden spaces)
     if bed_id is not None:
-        df.loc[df['bed_id'] == bed_id, ['occupant', 'nights']] = [name, nights]
+        target_row = df.loc[df['bed_id'] == bed_id]
+        current_occupant = str(target_row['occupant'].values[0]).strip()
+        if current_occupant != "" and current_occupant != name:
+            return False
+    
+    # Clear user's old selection
+    df.loc[df['occupant'] == name, ['occupant', 'nights']] = ["", ""]
+    
+    # Make new selection
+    if bed_id is not None:
+        # We explicitly cast everything to string here to satisfy the database
+        df.loc[df['bed_id'] == bed_id, 'occupant'] = str(name)
+        df.loc[df['bed_id'] == bed_id, 'nights'] = str(nights)
     
     conn.update(data=df)
     return True
 
 # --- UI LOGIC ---
-st.title("🛏️ Bed Selection")
+st.title("Bed & Room Selection for CO Springs AirBnB (with approximate prices)")
 
 # Step 1: Identity
 user_name = st.selectbox("Who are you?", ["Select a name..."] + NAMES)
@@ -87,10 +97,10 @@ if user_name != "Select a name...":
             st.rerun()
     
     # Step 3: Bed Grid
-    st.subheader("Peruse & Select a Bed")
+    st.subheader("Select a Bed, Bedroom, and Potential Roommates:")
     
     for room in ["BEDROOM A", "BEDROOM B", "BEDROOM C", "BEDROOM D", "BEDROOM E", "SHARED SPACE"]:
-        with st.expander(f"📍 {room}", expanded=True):
+        with st.expander(f"{room}", expanded=True):
             room_beds = [b for b in BED_DATA if b['room'] == room]
             for bed in room_beds:
                 # Find status in DB
@@ -105,7 +115,8 @@ if user_name != "Select a name...":
                 
                 with col2:
                     if is_taken:
-                        st.error(f"Taken: {db_row['occupant']} ({int(db_row['nights'])} nights)")
+                         nights_val = db_row['nights'] if db_row['nights'] != "" else "0"
+                         st.error(f"Taken: {db_row['occupant']} ({nights_val} nights)")
                     else:
                         if st.button(f"Claim", key=f"btn_{bed['id']}"):
                             success = update_bed(bed['id'], user_name, num_nights)
