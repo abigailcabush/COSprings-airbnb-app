@@ -116,7 +116,12 @@ if user_name != "Select a name...":
                 with col2:
                     if is_taken:
                          nights_val = db_row['nights'] if db_row['nights'] != "" else "0"
-                         st.error(f"Taken: {db_row['occupant']} ({nights_val} nights)")
+                         if db_row['nights'] != "":
+                             nights_display = int(float(db_row['nights']))
+                         else:
+                             nights_display = 0
+
+                         st.error(f"Taken: {db_row['occupant']} ({nights_display} nights)")
                     else:
                         if st.button(f"Claim", key=f"btn_{bed['id']}"):
                             success = update_bed(bed['id'], user_name, num_nights)
