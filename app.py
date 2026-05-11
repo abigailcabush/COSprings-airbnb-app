@@ -63,8 +63,7 @@ def update_bed(bed_id, name, nights):
 # --- UI LOGIC ---
 # Updated Title with requested spacing
 st.title("CO Springs AirBnB")
-st.markdown("# \nBed & Room Selection with approximate prices")
-
+st.markdown("## \n Bed & Room Selection with approximate prices")
 # Step 1: Identity
 user_name = st.selectbox("Who are you?", ["Select a name..."] + NAMES)
 
