@@ -101,13 +101,13 @@ if user_name != "Select a name...":
         
         # Display the full summary
         st.success(
-            f"✅ **Selection Saved!**\n\n"
+            f"**Selection Saved!**\n\n"
             f"**{current_bed['room']}**: {current_bed['description']}\n\n"
             f"\n\n"  # This adds the extra enter/space you wanted
             f"**Total Cost for the Weekend**: approximately \${total_price} ± \$15"
         )
         
-        if st.button("❌ Clear My Selection"):
+        if st.button("Clear My Selection"):
             update_bed(None, user_name, None)
             st.rerun()
     
