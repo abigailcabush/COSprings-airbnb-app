@@ -62,8 +62,8 @@ def update_bed(bed_id, name, nights):
 
 # --- UI LOGIC ---
 # Updated Title with requested spacing
-st.title("Bed & Room Selection for CO Springs AirBnB")
-st.markdown("### \n (with approximate prices)")
+st.title("CO Springs AirBnB")
+st.markdown("### \n Bed & Room Selection with approximate prices")
 
 # Step 1: Identity
 user_name = st.selectbox("Who are you?", ["Select a name..."] + NAMES)
@@ -80,13 +80,14 @@ if user_name != "Select a name...":
         total_p = int(p_night * n_count)
         
         st.success(
-            f"✅ **Selection Saved!**\n\n"
-            f"**{current_bed['room']}**: {current_bed['description']}\n\n"
+            f"**Selection Saved!**\n\n"
+            f"{current_bed['room']}: {current_bed['description']}\n\n"
+            f"\n\n" 
             f"\n\n" 
             f"**Total Cost**: approximately \${total_p} ± \$15"
         )
         
-        if st.button("❌ Clear My Selection"):
+        if st.button("Clear My Selection"):
             update_bed(None, user_name, None)
             st.rerun()
             
