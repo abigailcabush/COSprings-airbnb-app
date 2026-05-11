@@ -64,10 +64,7 @@ def update_bed(bed_id, name, nights):
 
 @st.dialog("Selection Confirmed!")
 def show_success_modal(room, desc, total, nights):
-    st.balloons() # Bringing back a tiny bit of fun since it's a popup!
-    st.write(f"🎉 **You're all set!**")
-    st.write(f"**Room:** {room}")
-    st.write(f"**Bed:** {desc}")
+    st.write(f"{room}, {desc}")
     st.write(f"**Total Cost:** \${total} ± \$15 for {nights} nights")
     st.divider()
     if st.button("Close"):
