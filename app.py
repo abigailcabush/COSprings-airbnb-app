@@ -104,7 +104,7 @@ if user_name != "Select a name...":
             f"**Selection Saved!**\n\n"
             f"**{current_bed['room']}**: {current_bed['description']}\n\n"
             f"\n\n"  # This adds the extra enter/space you wanted
-            f"**Total Cost for the Weekend**: approximately \${total_price} ± \$15"
+            f"**Total Cost for the Weekend**: approximately \${total_price} ± $20"
         )
         
         if st.button("Clear My Selection"):
@@ -143,7 +143,7 @@ if user_name != "Select a name...":
                             if success:
                                 total = (bed['price'] * num_nights)
                                 st.balloons()
-                                st.info(f"Your total cost is approximately ${total} +/- $15")
+                                st.info(f"Your total cost is approximately ${total} +/- $20")
                                 st.rerun()
                             else:
                                 st.error("Error. Please pick a different bed.")
