@@ -78,6 +78,7 @@ if user_name != "Select a name...":
     
     # 1. MOVE NIGHTS HERE (So it's always above the confirmation)
     num_nights = st.radio("How many nights are you staying?", [2, 3], horizontal=True)
+    st.divider()
     
     # 2. THEN SHOW THE SUCCESS BOX
     if not user_record.empty:
@@ -98,7 +99,6 @@ if user_name != "Select a name...":
             st.cache_data.clear()
             st.rerun()
     
-    st.divider()
     
     # Step 3: Bed Grid
     st.subheader("Select a Bed, Bedroom, and Potential Roommates:")
