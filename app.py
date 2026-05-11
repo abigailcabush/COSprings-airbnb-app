@@ -144,7 +144,11 @@ if user_name != "Select a name...":
                             if success:
                                 total = (bed['price'] * num_nights)
                                 st.balloons()
-                                st.info(f"Your total cost is approximately ${total} +/- $20")
+                                
+                                # This tiny line tells the browser to scroll to the top
+                                st.components.v1.html("<script>window.parent.scrollTo(0,0);</script>", height=0)
+                                
+                                st.info(f"Your total cost is approximately \${total} ± \$15")
                                 st.rerun()
                             else:
                                 st.error("Error. Please pick a different bed.")
