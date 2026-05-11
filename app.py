@@ -74,8 +74,8 @@ def update_bed(bed_id, name, nights):
     return True
 
 # --- UI LOGIC ---
-st.title("Bed & Room Selection for CO Springs AirBnB")
-st.markdown("### (with approximate prices)")
+st.title("CO Springs AirBnB")
+st.markdown("### Bed & Room Selection, considering approximate prices)")
 
 # Step 1: Identity
 user_name = st.selectbox("Who are you?", ["Select a name..."] + NAMES)
