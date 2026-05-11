@@ -34,6 +34,8 @@ BED_DATA = [
 
 # --- DATABASE CONNECTION ---
 conn = st.connection("gsheets", type=GSheetsConnection)
+# Add this decorator right above your function
+@st.cache_data(ttl=5)
 
 def get_data():
     df = conn.read(ttl=0)
