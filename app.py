@@ -91,7 +91,7 @@ if user_name != "Select a name...":
     # Show current selection
     if not user_record.empty:
         current_bed = user_record.iloc[0]
-        st.success(f"You currently have: **{current_bed['desc']}**")
+        st.success(f"You currently have: **{current_bed['description']}**")
         if st.button("❌ Clear My Selection"):
             update_bed(None, user_name, None)
             st.rerun()
