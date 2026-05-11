@@ -89,7 +89,7 @@ if user_name != "Select a name...":
         
         st.success(
             f"✅ **Selection Saved!**\n\n"
-            f"**{current_bed['room']}**: {current_bed['description']}\n\n"
+            f"{current_bed['room']}, {current_bed['description']}\n\n"
             f"\n\n" 
             f"**Total Cost**: approximately \${total_p} ± \$15 for {n_count} days"
         )
