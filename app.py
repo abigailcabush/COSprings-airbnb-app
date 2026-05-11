@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 from streamlit_gsheets import GSheetsConnection
 
-st.set_page_config(page_title="Airbnb Bed Selection", layout="centered")
+st.set_page_config(page_title="AirBnB Bed Selection", layout="centered")
 
 # --- APP CONFIG & DATA ---
 NAMES = [
