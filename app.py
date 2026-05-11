@@ -128,7 +128,22 @@ if user_name != "Select a name...":
                             if success:
                                 st.balloons()
                                 # The "Teleport" script to ensure they hit the top
-                                st.components.v1.html("<script>window.parent.scrollTo(0,0);</script>", height=0)
+                                st.components.v1.html(
+                                    """
+                                    <script>
+                                        var body = window.parent.document.querySelector(".main");
+                                        if (body) {
+                                            body.scrollTo({
+                                                top: 0,
+                                                left: 0,
+                                                behavior: 'smooth'
+                                            });
+                                        }
+                                        window.parent.scrollTo(0,0);
+                                    </script>
+                                    """,
+                                    height=0,
+                                )
                                 st.rerun()
                             else:
                                 st.error("Error. Please pick a different bed.")
