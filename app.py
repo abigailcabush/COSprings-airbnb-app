@@ -103,8 +103,8 @@ if user_name != "Select a name...":
     # Step 3: Bed Grid
     st.subheader("Select a Bed, Bedroom, and Potential Roommates:")
     
-    rooms = ["BEDROOM A (Main Level)", "BEDROOM B (Main Level)", "BEDROOM C (Main Level)", 
-             "BEDROOM D (Lower Level)", "BEDROOM E (Lower Level)", "SHARED SPACE"]
+    rooms = ["BEDROOM A (Main Level)", "BEDROOM B (Main Level)", "BEDROOM C (Main Level --> 3 bathrooms on main level)", 
+             "BEDROOM D (Lower Level --> only 1 bathroom on lower level)", "BEDROOM E (Lower Level)", "SHARED SPACE"]
              
     for room in rooms:
         with st.expander(f"{room}", expanded=True):
