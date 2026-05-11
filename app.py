@@ -127,16 +127,16 @@ if user_name != "Select a name...":
                         if st.button(f"Claim", key=f"btn_{bed['id']}"):
                             success = update_bed(bed['id'], user_name, num_nights)
                             if success:
-                                st.balloons()
-                                # This sets the URL to end in #linkto_top, which browsers automatically scroll to
-                                st.markdown(
-                                    '<script>window.parent.location.hash = "linkto_top";</script>', 
-                                    unsafe_allow_html=True
-                                )
-                                # Give the browser a tiny moment to process the scroll before rerunning
-                                import time
-                                time.sleep(0.5) 
-                                st.rerun()
+                                # 1. Clear the internal cache so the "Success" box at the top sees the new data
+                                st.cache_data.clear() 
                                 
+                                # 2. A subtle "toast" instead of big balloons
+                                st.toast("Selection updated!", icon="✅")
+                                
+                                # 3. The "Teleport" script (optional, keep it if you want the jump)
+                                st.components.v1.html("<script>window.parent.scrollTo(0,0);</script>", height=0)
+                                
+                                # 4. Refresh the page to show the new selection at the top
+                                st.rerun()
                             else:
-                                st.error("Error. Please pick a different bed.")
+                                st.error("Error. Someone might have just taken this bed!")
