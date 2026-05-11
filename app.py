@@ -147,6 +147,6 @@ if user_name != "Select a name...":
                                 # Trigger the Modal
                                 show_success_modal(room, bed['desc'], total_val, num_nights)
 
-                                st.rerun()
+                                
                             else:
                                 st.error("Error. Someone might have just taken this bed!")
