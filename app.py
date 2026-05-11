@@ -91,7 +91,20 @@ if user_name != "Select a name...":
     # Show current selection
     if not user_record.empty:
         current_bed = user_record.iloc[0]
-        st.success(f"You currently have: **{current_bed['description']}**")
+        
+        # Calculate the total for the summary
+        # We use float() just in case the spreadsheet stored it strangely
+        price_per_night = float(current_bed['price'])
+        nights_count = int(float(current_bed['nights']))
+        total_price = int(price_per_night * nights_count)
+        
+        # Display the full summary
+        st.success(
+            f"✅ **Selection Saved!**\n\n"
+            f"**{current_bed['room']}**: {current_bed['description']}\n\n"
+            f"**Total Cost**: approximately ${total_price} +/- $15"
+        )
+        
         if st.button("❌ Clear My Selection"):
             update_bed(None, user_name, None)
             st.rerun()
