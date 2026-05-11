@@ -67,6 +67,7 @@ st.markdown(
     "<h2 style='font-weight: 500; margin-top: -10px;'>Bed & Room Selection with approximate prices</h2>", 
     unsafe_allow_html=True
 )
+st.markdown("<div id='linkto_top'></div>", unsafe_allow_html=True)
 
 # Step 1: Identity
 user_name = st.selectbox("Who are you?", ["Select a name..."] + NAMES)
@@ -87,7 +88,7 @@ if user_name != "Select a name...":
             f"{current_bed['room']}: {current_bed['description']}\n\n"
             f"\n\n" 
             f"\n\n" 
-            f"**Total Cost**: approximately \${total_p} ± \$15"
+            f"**Total Cost for the Weekend**: approximately \${total_p} ± \$15"
         )
         
         if st.button("Clear My Selection"):
@@ -127,23 +128,15 @@ if user_name != "Select a name...":
                             success = update_bed(bed['id'], user_name, num_nights)
                             if success:
                                 st.balloons()
-                                # The "Teleport" script to ensure they hit the top
-                                st.components.v1.html(
-                                    """
-                                    <script>
-                                        var body = window.parent.document.querySelector(".main");
-                                        if (body) {
-                                            body.scrollTo({
-                                                top: 0,
-                                                left: 0,
-                                                behavior: 'smooth'
-                                            });
-                                        }
-                                        window.parent.scrollTo(0,0);
-                                    </script>
-                                    """,
-                                    height=0,
+                                # This sets the URL to end in #linkto_top, which browsers automatically scroll to
+                                st.markdown(
+                                    '<script>window.parent.location.hash = "linkto_top";</script>', 
+                                    unsafe_allow_html=True
                                 )
+                                # Give the browser a tiny moment to process the scroll before rerunning
+                                import time
+                                time.sleep(0.5) 
                                 st.rerun()
+                                
                             else:
                                 st.error("Error. Please pick a different bed.")
