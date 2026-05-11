@@ -65,7 +65,7 @@ def update_bed(bed_id, name, nights):
 @st.dialog("Selection Confirmed!")
 def show_success_modal(room, desc, total, nights):
     st.write(f"{room}, {desc}")
-    st.write(f"**Total Cost:** \${total} ± \$15 for {nights} nights")
+    st.write(f"**Estimated Total Cost for the Weekend:** \${total} ± \$15 for {nights} nights")
     st.divider()
     if st.button("Close"):
         st.rerun()
@@ -101,7 +101,7 @@ if user_name != "Select a name...":
             f"**Selection Saved!**\n\n"
             f"{current_bed['room']}, {current_bed['description']}\n\n"
             f"\n\n" 
-            f"**Estimated Total Cost for the Weekend**: \${total_p} ± \$15 for {n_count} nights"
+            f"**Estimated Total Cost for the Weekend:** \${total_p} ± \$15 for {n_count} nights"
         )
         
         if st.button("Clear My Selection"):
