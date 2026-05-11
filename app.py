@@ -134,9 +134,6 @@ if user_name != "Select a name...":
                                 # 2. A subtle "toast" instead of big balloons
                                 st.toast("Selection updated! Scroll to the top of page for full pricing details", icon="✅")
                                 
-                                # 3. The "Teleport" script (optional, keep it if you want the jump)
-                                st.components.v1.html("<script>window.parent.scrollTo(0,0);</script>", height=0)
-                                
                                 # 4. Refresh the page to show the new selection at the top
                                 st.rerun()
                             else:
