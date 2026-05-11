@@ -103,7 +103,7 @@ if user_name != "Select a name...":
         # Display the full summary
         st.success(
             f"**Selection Saved!**\n\n"
-            f"**{current_bed['room']}**: {current_bed['description']}\n\n"
+            f"{current_bed['room']}: {current_bed['description']}\n\n"
             f"\n\n"  # This adds the extra enter/space you wanted
             f"**Total Cost for the Weekend**: approximately \${total_price} ± $20"
         )
