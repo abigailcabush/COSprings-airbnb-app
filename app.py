@@ -134,7 +134,5 @@ if user_name != "Select a name...":
                                 # 2. A subtle "toast" instead of big balloons
                                 st.toast("Selection updated! Scroll to the top of page for full pricing details", icon="✅")
                                 
-                                # 4. Refresh the page to show the new selection at the top
-                                st.rerun()
                             else:
                                 st.error("Error. Someone might have just taken this bed!")
