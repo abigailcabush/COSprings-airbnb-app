@@ -122,7 +122,8 @@ if user_name != "Select a name...":
                 with col2:
                     if is_taken:
                          n_display = int(float(db_row['nights'])) if db_row['nights'] != "" else 0
-                         st.error(f"**Taken**: {db_row['occupant']} ({n_display} nights)")
+                         st.error(f"**Taken:**"
+                                  f"{db_row['occupant']} ({n_display} nights)")
                     else:
                         if st.button(f"Claim", key=f"btn_{bed['id']}"):
                             success = update_bed(bed['id'], user_name, num_nights)
@@ -131,7 +132,7 @@ if user_name != "Select a name...":
                                 st.cache_data.clear() 
                                 
                                 # 2. A subtle "toast" instead of big balloons
-                                st.toast("Selection updated!", icon="✅")
+                                st.toast("Selection updated! Scroll to the top of page for full pricing details", icon="✅")
                                 
                                 # 3. The "Teleport" script (optional, keep it if you want the jump)
                                 st.components.v1.html("<script>window.parent.scrollTo(0,0);</script>", height=0)
