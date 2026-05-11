@@ -91,7 +91,7 @@ if user_name != "Select a name...":
             f"**Selection Saved!**\n\n"
             f"{current_bed['room']}, {current_bed['description']}\n\n"
             f"\n\n" 
-            f"**Total Cost for the Weekend**: approximately \${total_p} ± \$15 for {n_count} days"
+            f"**Estimated Total Cost for the Weekend**: \${total_p} ± \$15 for {n_count} days"
         )
         
         if st.button("Clear My Selection"):
