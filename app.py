@@ -27,7 +27,7 @@ BED_DATA = [
     {"id": 13, "room": "BEDROOM E (Lower Level)", "desc": "Twin (top bunk of bed B)", "price": 76.0},
     {"id": 14, "room": "BEDROOM E (Lower Level)", "desc": "Twin (bottom bunk of bed A)", "price": 76.0},
     {"id": 15, "room": "BEDROOM E (Lower Level)", "desc": "Twin (top bunk of bed B)", "price": 76.0},
-    {"id": 16, "room": "SHARED SPACE", "desc": "Couch (Living Room)", "price": 56.0},
+    {"id": 16, "room": "SHARED SPACE", "desc": "Couch (3 options: 2 upstairs, 1 downstairs)", "price": 56.0},
 ]
 
 # --- DATABASE CONNECTION ---
