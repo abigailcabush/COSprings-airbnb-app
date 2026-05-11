@@ -122,7 +122,7 @@ if user_name != "Select a name...":
                 with col2:
                     if is_taken:
                          n_display = int(float(db_row['nights'])) if db_row['nights'] != "" else 0
-                         st.error(f"**Taken:**"
+                         st.error(f"**Taken:**\n\n"
                                   f"{db_row['occupant']} ({n_display} nights)")
                     else:
                         if st.button(f"Claim", key=f"btn_{bed['id']}"):
