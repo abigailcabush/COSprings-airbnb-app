@@ -35,7 +35,16 @@ BED_DATA = [
 conn = st.connection("gsheets", type=GSheetsConnection)
 
 def get_data():
-    return conn.read(ttl=0) # ttl=0 ensures we always get the freshest data
+    # We force 'occupant' and 'nights' to be strings so pandas doesn't panic
+    raw_df = conn.read(ttl=0)
+    df = raw_df.astype({
+        'occupant': str, 
+        'nights': str,
+        'bed_id': int
+    })
+    # Clean up: change "nan" strings back to empty space
+    df['occupant'] = df['occupant'].replace(['nan', 'None', ''], None)
+    return df
 
 def update_bed(bed_id, name, nights):
     df = get_data()
