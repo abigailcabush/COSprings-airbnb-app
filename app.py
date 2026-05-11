@@ -62,6 +62,18 @@ def update_bed(bed_id, name, nights):
     conn.update(data=df)
     return True
 
+@st.dialog("Selection Confirmed!")
+def show_success_modal(room, desc, total, nights):
+    st.balloons() # Bringing back a tiny bit of fun since it's a popup!
+    st.write(f"🎉 **You're all set!**")
+    st.write(f"**Room:** {room}")
+    st.write(f"**Bed:** {desc}")
+    st.write(f"**Total Cost:** \${total} ± \$15 for {nights} nights")
+    st.divider()
+    if st.button("Close"):
+        st.rerun()
+
+
 # --- UI LOGIC ---
 # Updated Title with requested spacing
 st.title("CO Springs AirBnB")
@@ -129,12 +141,12 @@ if user_name != "Select a name...":
                         if st.button(f"Claim", key=f"btn_{bed['id']}"):
                             success = update_bed(bed['id'], user_name, num_nights)
                             if success:
-                                # 1. Clear the internal cache so the "Success" box at the top sees the new data
-                                st.cache_data.clear() 
-
-                                st.toast("Selection updated! Scroll to the top of page for full pricing details", icon="✅")
+                                st.cache_data.clear()
+                                # Calculate totals to pass to the modal
+                                total_val = int(bed['price'] * num_nights)
+                                # Trigger the Modal
+                                show_success_modal(room, bed['desc'], total_val, num_nights)
 
                                 st.rerun()
-                                
                             else:
                                 st.error("Error. Someone might have just taken this bed!")
