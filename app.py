@@ -75,7 +75,7 @@ def update_bed(bed_id, name, nights):
 
 # --- UI LOGIC ---
 st.title("CO Springs AirBnB")
-st.markdown("### Bed & Room Selection, considering approximate prices)")
+st.markdown("### Bed & Room Selection, considering approximate prices")
 
 # Step 1: Identity
 user_name = st.selectbox("Who are you?", ["Select a name..."] + NAMES)
@@ -104,7 +104,7 @@ if user_name != "Select a name...":
             f"✅ **Selection Saved!**\n\n"
             f"**{current_bed['room']}**: {current_bed['description']}\n\n"
             f"\n\n"  # This adds the extra enter/space you wanted
-            f"**Total Cost**: approximately \${total_price} ± \$15"
+            f"**Total Cost for the Weekend**: approximately \${total_price} ± \$15"
         )
         
         if st.button("❌ Clear My Selection"):
