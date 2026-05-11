@@ -76,7 +76,10 @@ if user_name != "Select a name...":
     df = get_data()
     user_record = df[df['occupant'] == user_name]
     
-    # --- MOVED: SUCCESS BOX (At top for visibility) ---
+    # 1. MOVE NIGHTS HERE (So it's always above the confirmation)
+    num_nights = st.radio("How many nights are you staying?", [2, 3], horizontal=True)
+    
+    # 2. THEN SHOW THE SUCCESS BOX
     if not user_record.empty:
         current_bed = user_record.iloc[0]
         p_night = float(current_bed['price'])
@@ -84,19 +87,16 @@ if user_name != "Select a name...":
         total_p = int(p_night * n_count)
         
         st.success(
-            f"**Selection Saved!**\n\n"
-            f"{current_bed['room']}: {current_bed['description']}\n\n"
+            f"✅ **Selection Saved!**\n\n"
+            f"**{current_bed['room']}**: {current_bed['description']}\n\n"
             f"\n\n" 
-            f"\n\n" 
-            f"**Total Cost for the Weekend**: approximately \${total_p} ± \$15"
+            f"**Total Cost**: approximately \${total_p} ± \$15"
         )
         
-        if st.button("Clear My Selection"):
+        if st.button("❌ Clear My Selection"):
             update_bed(None, user_name, None)
+            st.cache_data.clear()
             st.rerun()
-            
-    # Step 2: Nights
-    num_nights = st.radio("How many nights are you staying?", [2, 3], horizontal=True)
     
     st.divider()
     
