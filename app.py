@@ -23,7 +23,7 @@ BED_DATA = [
     
     {"id": 8, "room": "BEDROOM D (Lower Level --> only 1 bathroom on lower level)", "desc": "Shared Queen #1", "price": 86.5, "type": "shared"},
     {"id": 9, "room": "BEDROOM D (Lower Level --> only 1 bathroom on lower level)", "desc": "Shared Queen #2", "price": 86.5, "type": "shared"},
-    {"id": 17, "room": "BEDROOM D (Lower Level --> only 1 bathroom on lower level)", "desc": "Solo Queen #1 (Entire Bed to Yourself)", "price": 114.5, "type": "solo"},
+    {"id": 17, "room": "BEDROOM D (Lower Level --> only 1 bathroom on lower level)", "desc": "Solo Queen", "price": 114.5, "type": "solo"},
     
     {"id": 10, "room": "BEDROOM E (Lower Level)", "desc": "Shared King #1", "price": 74, "type": "standard"},
     {"id": 11, "room": "BEDROOM E (Lower Level)", "desc": "Shared King #2", "price": 74, "type": "standard"},
