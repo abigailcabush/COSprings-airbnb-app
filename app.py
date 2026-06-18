@@ -145,7 +145,7 @@ if user_name != "Select a name...":
                     "<p style='font-style: italic; color: #555; margin-top: -5px; margin-bottom: 20px;'>"
                     "This room contains one Queen Bed. <br>"
                     "2 Options: reserve the room for yourself OR share the bed with a friend. <br> <br>"
-                    "[A shared spot in this room is cheaper than Bedroom C since it has less convenient access to bathrooms. Most of the bathrooms are on the main floor]"
+                    "[A shared spot in this room is cheaper than Bedroom C since it has less convenient access to bathrooms. 3 of the 4 bathrooms are on the main floor]"
                     "</p>", 
                     unsafe_allow_html=True
                 )
