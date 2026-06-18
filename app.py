@@ -18,12 +18,12 @@ BED_DATA = [
     {"id": 3, "room": "BEDROOM B (Main Level)", "desc": "Shared Queen #1 (bottom bunk)", "price": 86.5, "type": "standard"},
     {"id": 4, "room": "BEDROOM B (Main Level)", "desc": "Shared Queen #2 (bottom bunk)", "price": 86.5, "type": "standard"},
     {"id": 5, "room": "BEDROOM B (Main Level)", "desc": "Twin (top bunk)", "price": 89, "type": "standard"},
-    {"id": 6, "room": "BEDROOM C (Main Level --> 3 bathrooms on main level)", "desc": "Shared Queen #1", "price": 91.5, "type": "standard"},
-    {"id": 7, "room": "BEDROOM C (Main Level --> 3 bathrooms on main level)", "desc": "Shared Queen #2", "price": 91.5, "type": "standard"},
+    {"id": 6, "room": "BEDROOM C (Main Level)", "desc": "Shared Queen #1", "price": 91.5, "type": "standard"},
+    {"id": 7, "room": "BEDROOM C (Main Level)", "desc": "Shared Queen #2", "price": 91.5, "type": "standard"},
     
-    {"id": 8, "room": "BEDROOM D (Lower Level --> only 1 bathroom on lower level)", "desc": "Shared Queen #1", "price": 86.5, "type": "shared"},
-    {"id": 9, "room": "BEDROOM D (Lower Level --> only 1 bathroom on lower level)", "desc": "Shared Queen #2", "price": 86.5, "type": "shared"},
-    {"id": 17, "room": "BEDROOM D (Lower Level --> only 1 bathroom on lower level)", "desc": "Solo Queen", "price": 114.5, "type": "solo"},
+    {"id": 8, "room": "BEDROOM D (Lower Level)", "desc": "Shared Queen #1", "price": 86.5, "type": "shared"},
+    {"id": 9, "room": "BEDROOM D (Lower Level)", "desc": "Shared Queen #2", "price": 86.5, "type": "shared"},
+    {"id": 17, "room": "BEDROOM D (Lower Level)", "desc": "Solo Queen", "price": 114.5, "type": "solo"},
     
     {"id": 10, "room": "BEDROOM E (Lower Level)", "desc": "Shared King #1", "price": 74, "type": "standard"},
     {"id": 11, "room": "BEDROOM E (Lower Level)", "desc": "Shared King #2", "price": 74, "type": "standard"},
