@@ -141,7 +141,7 @@ if user_name != "Select a name...":
             if "BEDROOM D" in room:
                 st.markdown(
                     "<p style='font-style: italic; color: #555; margin-top: -5px; margin-bottom: 20px;'>"
-                    "This room contains one Queen Bed."
+                    "This room contains one Queen Bed. <br>"
                     "2 Options: reserve the room for yourself OR share the bed with a friend."
                     "</p>", 
                     unsafe_allow_html=True
