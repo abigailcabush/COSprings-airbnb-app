@@ -84,7 +84,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-user_name = st.selectbox("Who are you?", ["Select a name..."] + NAMES)
+user_name = st.selectbox("Who are you?", ["Select a name..."] + NAMES, filter_mode=None)
 
 if user_name != "Select a name...":
     df = get_data()
