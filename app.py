@@ -172,7 +172,7 @@ if user_name != "Select a name...":
                         st.caption(f"approximately \${bed['price']}/night")
                         
                         if is_taken:
-                            st.error(f"**Taken:**\n\n{blocking_msg}")
+                            st.error(f"**Unavailible:**\n\n{blocking_msg}")
                         else:
                             if st.button(f"Claim Solo Bed", key=f"btn_{bed['id']}", use_container_width=True):
                                 success = update_bed(bed['id'], user_name, num_nights)
@@ -201,7 +201,7 @@ if user_name != "Select a name...":
                         st.caption(f"approximately \${bed['price']}/night")
                         
                         if is_taken:
-                            st.error(f"**Taken:**\n\n{blocking_msg}")
+                            st.error(f"**Unavailible:**\n\n{blocking_msg}")
                         else:
                             if st.button(f"Claim Shared Slot", key=f"btn_{bed['id']}", use_container_width=True):
                                 success = update_bed(bed['id'], user_name, num_nights)
