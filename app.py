@@ -67,7 +67,6 @@ def update_bed(bed_id, name, nights):
 
 @st.dialog("Selection Confirmed!")
 def show_success_modal(room, desc, total, nights):
-    st.balloons()
     st.write(f"🎉 **You're all set!**")
     st.write(f"**Room:** {room}")
     st.write(f"**Bed Layout Chosen:** {desc}")
@@ -142,8 +141,8 @@ if user_name != "Select a name...":
             if "BEDROOM D" in room:
                 st.markdown(
                     "<p style='font-style: italic; color: #555; margin-top: -5px; margin-bottom: 20px;'>"
-                    "💡 <b>Note:</b> This room contains exactly <b>one physical Queen Bed</b>. "
-                    "You can reserve it entirely for yourself (Solo Layout) OR claim a spot to share it (Shared Layout)."
+                    "This room contains one Queen Bed. "
+                    "Option: reserve the room for yourselve OR share the bed with a friend."
                     "</p>", 
                     unsafe_allow_html=True
                 )
@@ -156,7 +155,6 @@ if user_name != "Select a name...":
                 
                 # Left Column: Solo Choice
                 with col_solo:
-                    st.markdown("<h4 style='margin-top: 0; color: #1f77b4;'>👤 Option 1: Solo Bed</h4>", unsafe_allow_html=True)
                     for bed in solo_beds:
                         is_taken = False
                         blocking_msg = ""
@@ -187,7 +185,6 @@ if user_name != "Select a name...":
                 
                 # Right Column: Shared Choices
                 with col_shared:
-                    st.markdown("<h4 style='margin-top: 0; color: #2ca02c;'>👥 Option 2: Shared Bed</h4>", unsafe_allow_html=True)
                     for bed in shared_beds:
                         is_taken = False
                         blocking_msg = ""
@@ -230,7 +227,7 @@ if user_name != "Select a name...":
                     with col2:
                         if is_taken:
                              n_display = int(float(db_row['nights'])) if db_row['nights'] != "" else 0
-                             st.error(f"**Taken:**\n\n"
+                             st.error(f"**Unavailible:**\n\n"
                                       f"{db_row['occupant']} ({n_display} nights)")
                         else:
                             if st.button(f"Claim", key=f"btn_{bed['id']}"):
