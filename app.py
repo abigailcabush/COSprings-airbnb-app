@@ -121,8 +121,8 @@ if user_name != "Select a name...":
 # Step 3: Bed Grid
     st.subheader("Select a Bed, Bedroom, and Roommates:")
     
-    rooms = ["BEDROOM A (Main Level)", "BEDROOM B (Main Level)", "BEDROOM C (Main Level --> 3 bathrooms on main level)", 
-             "BEDROOM D (Lower Level --> only 1 bathroom on lower level)", "BEDROOM E (Lower Level)"]
+    rooms = ["BEDROOM A (Main Level)", "BEDROOM B (Main Level)", "BEDROOM C (Main Level)", 
+             "BEDROOM D (Lower Level)", "BEDROOM E (Lower Level)"]
              
     # Pre-extract occupant logic specifically mapping out Bedroom D interlocking rules
     occ_8 = df[df['bed_id'] == 8].iloc[0]['occupant'] != ""
