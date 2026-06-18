@@ -78,7 +78,7 @@ def show_success_modal(room, desc, total, nights):
 # --- UI LOGIC ---
 st.title("CO Springs AirBnB")
 st.markdown(
-    "<h2 style='font-weight: 500; margin-top: -10px;'>Bed & Room Selection with approximate prices</h2>", 
+    "<h2 style='font-weight: 250; margin-top: -10px;'>Bed & Room Selection with approximate prices</h2>", 
     unsafe_allow_html=True
 )
 
