@@ -161,7 +161,7 @@ if user_name != "Select a name...":
                         if occ_8 or occ_9:
                             is_taken = True
                             roommates = [n for n in [name_8, name_9] if n != ""]
-                            blocking_msg = f"Locked out (Bed currently shared by: {', '.join(roommates)})"
+                            blocking_msg = f"Bed will be shared: {', '.join(roommates)}"
                         elif occ_17:
                             is_taken = True
                             db_row = df[df['bed_id'] == 17].iloc[0]
@@ -191,7 +191,7 @@ if user_name != "Select a name...":
                         db_row = df[df['bed_id'] == bed['id']].iloc[0]
                         if occ_17:
                             is_taken = True
-                            blocking_msg = f"Locked out (Bed claimed Solo by {name_17})"
+                            blocking_msg = f"Bed claimed by {name_17}"
                         elif db_row['occupant'] != "":
                             is_taken = True
                             n_disp = int(float(db_row['nights'])) if db_row['nights'] != "" else 0
