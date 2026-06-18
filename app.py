@@ -119,6 +119,7 @@ if user_name != "Select a name...":
             st.rerun()
     
     st.divider()
+# Step 3: Bed Grid
     st.subheader("Select a Bed, Bedroom, and Roommates:")
     
     rooms = ["BEDROOM A (Main Level)", "BEDROOM B (Main Level)", "BEDROOM C (Main Level --> 3 bathrooms on main level)", 
@@ -136,54 +137,107 @@ if user_name != "Select a name...":
     for room in rooms:
         with st.expander(f"{room}", expanded=True):
             room_beds = [b for b in BED_DATA if b['room'] == room]
-            for bed in room_beds:
+            
+            # --- SPECIAL VISUAL LAYOUT FOR BEDROOM D ---
+            if "BEDROOM D" in room:
+                st.markdown(
+                    "<p style='font-style: italic; color: #555; margin-top: -5px; margin-bottom: 20px;'>"
+                    "💡 <b>Note:</b> This room contains exactly <b>one physical Queen Bed</b>. "
+                    "You can reserve it entirely for yourself (Solo Layout) OR claim a spot to share it (Shared Layout)."
+                    "</p>", 
+                    unsafe_allow_html=True
+                )
                 
-                # Dynamic Interlocking Logic Flags
-                is_taken = False
-                blocking_msg = ""
+                # Create the two columns for side-by-side configurations
+                col_solo, col_shared = st.columns(2)
                 
-                if bed['type'] == "standard":
-                    db_row = df[df['bed_id'] == bed['id']].iloc[0]
-                    if db_row['occupant'] != "":
-                        is_taken = True
-                        n_disp = int(float(db_row['nights'])) if db_row['nights'] != "" else 0
-                        blocking_msg = f"{db_row['occupant']} ({n_disp} nights)"
+                solo_beds = [b for b in room_beds if b['type'] == 'solo']
+                shared_beds = [b for b in room_beds if b['type'] == 'shared']
+                
+                # Left Column: Solo Choice
+                with col_solo:
+                    st.markdown("<h4 style='margin-top: 0; color: #1f77b4;'>👤 Option 1: Solo Bed</h4>", unsafe_allow_html=True)
+                    for bed in solo_beds:
+                        is_taken = False
+                        blocking_msg = ""
+                        if occ_8 or occ_9:
+                            is_taken = True
+                            roommates = [n for n in [name_8, name_9] if n != ""]
+                            blocking_msg = f"Locked out (Bed currently shared by: {', '.join(roommates)})"
+                        elif occ_17:
+                            is_taken = True
+                            db_row = df[df['bed_id'] == 17].iloc[0]
+                            n_disp = int(float(db_row['nights'])) if db_row['nights'] != "" else 0
+                            blocking_msg = f"{name_17} ({n_disp} nights)"
                         
-                elif bed['type'] == "shared":
-                    db_row = df[df['bed_id'] == bed['id']].iloc[0]
-                    if occ_17:  # Locked out because somebody claimed the whole bed Solo
-                        is_taken = True
-                        blocking_msg = f"Locked out (Bed claimed Solo by {name_17})"
-                    elif db_row['occupant'] != "": # Locked out because a standard roommate claimed this spot
-                        is_taken = True
-                        n_disp = int(float(db_row['nights'])) if db_row['nights'] != "" else 0
-                        blocking_msg = f"{db_row['occupant']} ({n_disp} nights)"
+                        st.write(f"**{bed['desc']}**")
+                        st.caption(f"approximately \${bed['price']}/night")
                         
-                elif bed['type'] == "solo":
-                    if occ_8 or occ_9:  # Locked out because either shared slot is populated
-                        is_taken = True
-                        roommates = [n for n in [name_8, name_9] if n != ""]
-                        blocking_msg = f"Locked out (Bed is currently shared by: {', '.join(roommates)})"
-                    elif occ_17:
-                        is_taken = True
-                        db_row = df[df['bed_id'] == 17].iloc[0]
-                        n_disp = int(float(db_row['nights'])) if db_row['nights'] != "" else 0
-                        blocking_msg = f"{name_17} ({n_disp} nights)"
-
-                col1, col2 = st.columns([3, 1])
-                with col1:
-                    st.write(f"**{bed['desc']}**")
-                    st.caption(f"approximately \${bed['price']}/night")
+                        if is_taken:
+                            st.error(f"**Taken:**\n\n{blocking_msg}")
+                        else:
+                            if st.button(f"Claim Solo Bed", key=f"btn_{bed['id']}", use_container_width=True):
+                                success = update_bed(bed['id'], user_name, num_nights)
+                                if success:
+                                    st.cache_data.clear()
+                                    total_val = int(bed['price'] * num_nights)
+                                    show_success_modal(room, bed['desc'], total_val, num_nights)
+                                else:
+                                    st.error("Error. Someone might have just taken this bed!")
                 
-                with col2:
-                    if is_taken:
-                        st.error(f"**Taken:**\n\n{blocking_msg}")
-                    else:
-                        if st.button(f"Claim", key=f"btn_{bed['id']}"):
-                            success = update_bed(bed['id'], user_name, num_nights)
-                            if success:
-                                st.cache_data.clear()
-                                total_val = int(bed['price'] * num_nights)
-                                show_success_modal(room, bed['desc'], total_val, num_nights)
-                            else:
-                                st.error("Error. Someone might have just taken this bed!")
+                # Right Column: Shared Choices
+                with col_shared:
+                    st.markdown("<h4 style='margin-top: 0; color: #2ca02c;'>👥 Option 2: Shared Bed</h4>", unsafe_allow_html=True)
+                    for bed in shared_beds:
+                        is_taken = False
+                        blocking_msg = ""
+                        db_row = df[df['bed_id'] == bed['id']].iloc[0]
+                        if occ_17:
+                            is_taken = True
+                            blocking_msg = f"Locked out (Bed claimed Solo by {name_17})"
+                        elif db_row['occupant'] != "":
+                            is_taken = True
+                            n_disp = int(float(db_row['nights'])) if db_row['nights'] != "" else 0
+                            blocking_msg = f"{db_row['occupant']} ({n_disp} nights)"
+                        
+                        st.write(f"**{bed['desc']}**")
+                        st.caption(f"approximately \${bed['price']}/night")
+                        
+                        if is_taken:
+                            st.error(f"**Taken:**\n\n{blocking_msg}")
+                        else:
+                            if st.button(f"Claim Shared Slot", key=f"btn_{bed['id']}", use_container_width=True):
+                                success = update_bed(bed['id'], user_name, num_nights)
+                                if success:
+                                    st.cache_data.clear()
+                                    total_val = int(bed['price'] * num_nights)
+                                    show_success_modal(room, bed['desc'], total_val, num_nights)
+                                else:
+                                    st.error("Error. Someone might have just taken this bed!")
+            
+            # --- STANDARD VISUAL LAYOUT FOR ALL OTHER ROOMS ---
+            else:
+                for bed in room_beds:
+                    db_row = df[df['bed_id'] == bed['id']].iloc[0]
+                    is_taken = db_row['occupant'] != ""
+                    
+                    col1, col2 = st.columns([3, 1])
+                    
+                    with col1:
+                        st.write(f"**{bed['desc']}**")
+                        st.caption(f"approximately \${bed['price']}/night")
+                    
+                    with col2:
+                        if is_taken:
+                             n_display = int(float(db_row['nights'])) if db_row['nights'] != "" else 0
+                             st.error(f"**Taken:**\n\n"
+                                      f"{db_row['occupant']} ({n_display} nights)")
+                        else:
+                            if st.button(f"Claim", key=f"btn_{bed['id']}"):
+                                success = update_bed(bed['id'], user_name, num_nights)
+                                if success:
+                                    st.cache_data.clear() 
+                                    total_val = int(bed['price'] * num_nights)
+                                    show_success_modal(room, bed['desc'], total_val, num_nights)
+                                else:
+                                    st.error("Error. Someone might have just taken this bed!")
