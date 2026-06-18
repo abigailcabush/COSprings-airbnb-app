@@ -141,8 +141,8 @@ if user_name != "Select a name...":
             if "BEDROOM D" in room:
                 st.markdown(
                     "<p style='font-style: italic; color: #555; margin-top: -5px; margin-bottom: 20px;'>"
-                    "This room contains one Queen Bed. "
-                    "Option: reserve the room for yourselve OR share the bed with a friend."
+                    "This room contains one Queen Bed."
+                    "2 Options: reserve the room for yourself OR share the bed with a friend."
                     "</p>", 
                     unsafe_allow_html=True
                 )
@@ -169,7 +169,7 @@ if user_name != "Select a name...":
                             blocking_msg = f"{name_17} ({n_disp} nights)"
                         
                         st.write(f"**{bed['desc']}**")
-                        st.caption(f"approximately \${bed['price']}/night")
+                        st.caption(f"~\${bed['price']}/night")
                         
                         if is_taken:
                             st.error(f"**Unavailible:**\n\n{blocking_msg}")
@@ -198,7 +198,7 @@ if user_name != "Select a name...":
                             blocking_msg = f"{db_row['occupant']} ({n_disp} nights)"
                         
                         st.write(f"**{bed['desc']}**")
-                        st.caption(f"approximately \${bed['price']}/night")
+                        st.caption(f"~\${bed['price']}/night")
                         
                         if is_taken:
                             st.error(f"**Unavailible:**\n\n{blocking_msg}")
@@ -222,7 +222,7 @@ if user_name != "Select a name...":
                     
                     with col1:
                         st.write(f"**{bed['desc']}**")
-                        st.caption(f"approximately \${bed['price']}/night")
+                        st.caption(f"~\${bed['price']}/night")
                     
                     with col2:
                         if is_taken:
