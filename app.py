@@ -70,7 +70,7 @@ def show_success_modal(room, desc, total, nights):
     st.write(f"🎉 **You're all set!**")
     st.write(f"**Room:** {room}")
     st.write(f"**Bed Layout Chosen:** {desc}")
-    st.write(f"**Total Cost:** \${total} for {nights} nights (you can venmo Abby @Abby-Cabush")
+    st.write(f"**Total Cost:** \${total} for {nights} nights (you can venmo Abby: @Abby-Cabush")
     st.divider()
     if st.button("Close"):
         st.rerun()
@@ -111,7 +111,7 @@ if user_name != "Select a name...":
             f"**Selection Saved!**\n\n"
             f"{current_bed['room']}, {bed_label}\n\n"
             f"\n\n" 
-            f"**Total Cost for the Weekend**: \${total_p} for {n_count} nights (you can venmo Abby @Abby-Cabush)"
+            f"**Total Cost for the Weekend**: \${total_p} for {n_count} nights (you can venmo Abby: @Abby-Cabush)"
         )
         
         if st.button("Clear My Selection"):
