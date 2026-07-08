@@ -70,7 +70,7 @@ def show_success_modal(room, desc, total, nights):
     st.write(f"🎉 **You're all set!**")
     st.write(f"**Room:** {room}")
     st.write(f"**Bed Layout Chosen:** {desc}")
-    st.write(f"**Total Cost:** \${total} for {nights} nights (** Subject to Change)")
+    st.write(f"**Total Cost:** \${total} for {nights} nights (you can venmo Abby @Abby-Cabush")
     st.divider()
     if st.button("Close"):
         st.rerun()
@@ -111,7 +111,7 @@ if user_name != "Select a name...":
             f"**Selection Saved!**\n\n"
             f"{current_bed['room']}, {bed_label}\n\n"
             f"\n\n" 
-            f"**Total Cost for the Weekend**: \${total_p} for {n_count} nights (**Subject to Change)"
+            f"**Total Cost for the Weekend**: \${total_p} for {n_count} nights (you can venmo Abby @Abby-Cabush)"
         )
         
         if st.button("Clear My Selection"):
@@ -172,7 +172,7 @@ if user_name != "Select a name...":
                             blocking_msg = f"{name_17} ({n_disp} nights)"
                         
                         st.write(f"**{bed['desc']}**")
-                        st.caption(f"~\${bed['price']}/night")
+                        st.caption(f"\${bed['price']}/night")
                         
                         if is_taken:
                             st.error(f"**Unavailible:**\n\n{blocking_msg}")
@@ -201,7 +201,7 @@ if user_name != "Select a name...":
                             blocking_msg = f"{db_row['occupant']} ({n_disp} nights)"
                         
                         st.write(f"**{bed['desc']}**")
-                        st.caption(f"~\${bed['price']}/night")
+                        st.caption(f"\${bed['price']}/night")
                         
                         if is_taken:
                             st.error(f"**Unavailible:**\n\n{blocking_msg}")
@@ -225,7 +225,7 @@ if user_name != "Select a name...":
                     
                     with col1:
                         st.write(f"**{bed['desc']}**")
-                        st.caption(f"~\${bed['price']}/night")
+                        st.caption(f"\${bed['price']}/night")
                     
                     with col2:
                         if is_taken:
