@@ -30,7 +30,7 @@ BED_DATA = [
     {"id": 12, "room": "BEDROOM E (Lower Level)", "desc": "Twin (top bunk of bed A)", "price": 79, "type": "standard"},
     {"id": 13, "room": "BEDROOM E (Lower Level)", "desc": "Twin (top bunk of bed B)", "price": 79, "type": "standard"},
     {"id": 14, "room": "BEDROOM E (Lower Level)", "desc": "Twin (bottom bunk of bed A)", "price": 79, "type": "standard"},
-    {"id": 15, "room": "BEDROOM E (Lower Level)", "desc": "Twin (top bunk of bed B)", "price": 79, "type": "standard"},
+    {"id": 15, "room": "BEDROOM E (Lower Level)", "desc": "Twin (bottom bunk of bed B)", "price": 79, "type": "standard"},
 ]
 
 # --- DATABASE CONNECTION ---
